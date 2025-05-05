@@ -1,0 +1,254 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <link href="{% static 'style.css'%}" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Atlas Fitness - Your Personal Fitness Companion</title>
+    <style>
+        .hero-section {
+            background: linear-gradient(to right, #4a90e2, #357abd);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 50px;
+            border-radius: 15px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.4em;
+            opacity: 0.9;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(74, 144, 226, 0.2);
+            border-color: #4a90e2;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-card:hover h3 {
+            color: #357abd;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #4a90e2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .goals-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .goal-item {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .goal-item:hover {
+            transform: translateX(10px);
+            background: #f0f2f5;
+        }
+
+        .goal-item h4 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .goal-item p {
+            margin: 0;
+            color: #666;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #4a90e2;
+            margin: 15px auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 0;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .feature-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 2em;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+        .navbar-brand:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                Atlas Fitness
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'exercises' %}">Track Exercises</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'foodie' %}">Track Food</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <div class="container">
+                <h1>Welcome to Atlas Fitness</h1>
+                <p>Your all-in-one fitness tracking companion</p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="section-title">Our Features</h2>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'exercises' %}" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Exercise Tracking</h3>
+                    <p>Track your workouts with precision, monitor calories burned, and discover new exercises tailored to your fitness goals. Get detailed insights into your exercise performance and progress.</p>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'foodie' %}" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Nutrition Tracking</h3>
+                    <p>Monitor your daily nutrition with our comprehensive food database. Track calories, macronutrients, and get personalized insights to maintain a balanced diet that supports your fitness goals.</p>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'profile' %}" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Visualize your fitness journey with detailed progress charts and analytics. Track your improvements over time and stay motivated as you work towards your goals.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Goals Section -->
+        <div class="goals-section mb-5">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="goal-item">
+                        <h4><i class="fas fa-bullseye me-2 text-primary"></i>Comprehensive Tracking</h4>
+                        <p>Provide a complete solution for monitoring all aspects of your fitness journey in one convenient place.</p>
+                    </div>
+                    <div class="goal-item">
+                        <h4><i class="fas fa-brain me-2 text-primary"></i>Smart Insights</h4>
+                        <p>Deliver intelligent analytics and personalized recommendations based on your unique fitness data.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="goal-item">
+                        <h4><i class="fas fa-heart me-2 text-primary"></i>User Experience</h4>
+                        <p>Create an intuitive and enjoyable platform that makes fitness tracking simple and motivating.</p>
+                    </div>
+                    <div class="goal-item">
+                        <h4><i class="fas fa-users me-2 text-primary"></i>Community Support</h4>
+                        <p>Build a supportive community where users can share experiences and motivate each other.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
